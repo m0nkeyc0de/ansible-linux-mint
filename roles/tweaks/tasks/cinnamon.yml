@@ -1,4 +1,13 @@
 ---
+- name: Default applications
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/applications/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "terminal/exec"
+      value: "'terminator'"
+  tags: cinnamon
+
 - name: Configure Nemo
   community.general.dconf:
     key: "/org/nemo/preferences/{{ item.key }}"
