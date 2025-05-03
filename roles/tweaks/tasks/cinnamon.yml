@@ -1,0 +1,63 @@
+---
+- name: Configure Nemo
+  community.general.dconf:
+    key: "/org/nemo/preferences/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "default-folder-viewer"
+      value: "'list-view'"
+    - key: "detect-content"
+      value: "false"
+  tags: cinnamon
+
+- name: Configure keybindings
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/keybindings/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "looking-glass-keybinding"
+      value: "['<Primary><Alt>l']"
+    - key: "media-keys/screensaver"
+      value: "['XF86ScreenSaver', '<Super>l']"
+  tags: cinnamon
+
+- name: Configure power options
+  community.general.dconf:
+    key: "/org/cinnamon/settings-daemon/plugins/power/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "lid-close-ac-action"
+      value: "'nothing'"
+    - key: "lid-close-battery-action"
+      value: "'nothing'"
+  tags: cinnamon
+    
+- name: Media handling options
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/media-handling/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "automount-open"
+      value: "false"
+    - key: "autorun-never"
+      value: "true"
+  tags: cinnamon
+
+- name: Disable sounds
+  community.general.dconf:
+    key: "/org/cinnamon/sounds/{{ item }}"
+    value: "false"
+  loop:
+    - "login-enabled"
+    - "logout-enabled"
+    - "notification-enabled"
+    - "plug-enabled"
+    - "switch-enabled"
+    - "tile-enabled"
+    - "unplug-enabled"
+    - "close-enabled"
+    - "maximize-enabled"
+    - "minimize-enabled"
+    - "map-enabled"
+    - "unmaximize-enabled"
+  tags: cinnamon

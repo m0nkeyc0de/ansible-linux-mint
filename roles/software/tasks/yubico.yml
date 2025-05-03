@@ -1,0 +1,27 @@
+---
+# Yubico Authenticator 5.1 in LM22 repository is broken
+# https://forums.linuxmint.com/viewtopic.php?t=439678
+
+- name: Install PC/SC Smart Card Daemon
+  become: true
+  ansible.builtin.apt:
+    name: pcscd
+
+- name: "Download {{ yubioath_tgz }}"
+  become: true
+  ansible.builtin.get_url:
+    url: "https://developers.yubico.com/yubioath-flutter/Releases/{{ yubioath_tgz }}"
+    dest: "{{ yubioath_tgz_local }}"
+    checksum: "{{ yubioath_checksum }}" # better to be safe than sorry
+
+- name: "Extract {{ yubioath_tgz }}"
+  become: true
+  ansible.builtin.unarchive:
+    dest: "/opt"
+    src: "{{ yubioath_tgz_local }}"
+    creates: "{{ yubioath_dir }}"
+
+- name: "Install desktop file"
+  ansible.builtin.command:
+    cmd: "{{ yubioath_dir }}/desktop_integration.sh --install"
+    creates: "/home/{{ ansible_user_id }}/.local/share/applications/com.yubico.yubioath.desktop"

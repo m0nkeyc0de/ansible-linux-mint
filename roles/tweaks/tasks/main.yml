@@ -1,0 +1,9 @@
+---
+- name: User tweaks
+  ansible.builtin.include_tasks: user.yml
+  tags: always
+
+- name: Cinnamon configuration
+  ansible.builtin.include_tasks: cinnamon.yml
+  tags: always
+

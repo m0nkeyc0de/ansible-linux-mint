@@ -1,0 +1,20 @@
+---
+- name: Update software
+  ansible.builtin.include_tasks: update.yml
+  tags: update
+
+- name: Install Wireshark
+  ansible.builtin.include_tasks: wireshark.yml
+  tags: wireshark
+
+- name: APT software
+  ansible.builtin.include_tasks: apt.yml
+  tags: apt
+
+- name: Flatpak software
+  ansible.builtin.include_tasks: flatpak.yml
+  tags: flatpak
+
+- name: Install Yubico Authenticator from Yubico website
+  ansible.builtin.include_tasks: yubico.yml
+  tags: yubico

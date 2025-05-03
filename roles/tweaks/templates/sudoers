@@ -1,0 +1,18 @@
+# Manage power states
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/sbin/shutdown
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/sbin/poweroff
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/sbin/reboot
+
+# Dirty bytes 
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/sync
+
+# Software maintenance operations
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/local/bin/apt update
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/local/bin/apt dist-upgrade
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/local/bin/apt autoremove
+
+# Common tools easy access
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/tcpdump
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/picocom
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/wavemon
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/nmap

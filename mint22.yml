@@ -1,0 +1,17 @@
+---
+- name: Take care of Linux Mint 22 Workstation
+  gather_facts: true
+  connection: local
+  hosts: all
+
+  tasks:
+  - name: Software
+    ansible.builtin.include_role:
+      name: software
+    tags: always
+  
+  - name: Tweaks
+    ansible.builtin.include_role:
+      name: tweaks
+    tags: always
+

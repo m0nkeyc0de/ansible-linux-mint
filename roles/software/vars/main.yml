@@ -1,0 +1,8 @@
+---
+# https://developers.yubico.com/yubioath-flutter/Releases/
+yubioath_release: 7.2.0
+yubioath_checksum: "md5:D03B4B410873C4B16754978A4DC69107"
+# Local files
+yubioath_tgz: "yubico-authenticator-{{ yubioath_release }}-linux.tar.gz"
+yubioath_tgz_local: "/opt/{{ yubioath_tgz }}"
+yubioath_dir: "/opt/yubico-authenticator-{{ yubioath_release }}-linux" # Where the extracted archive resides

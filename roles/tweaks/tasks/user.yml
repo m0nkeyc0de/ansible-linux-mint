@@ -1,0 +1,52 @@
+---
+- name: Bin folder in homedir
+  ansible.builtin.file:
+    path: "/home/{{ ansible_user_id }}/bin"
+    state: directory
+  tags: user
+
+- name: "Selective passwordless sudo for {{ ansible_user_id }}"
+  become: true
+  ansible.builtin.template:
+    src: templates/sudoers
+    dest: "/etc/sudoers.d/{{ ansible_user_id }}"
+  tags: user
+
+- name: .nanorc
+  ansible.builtin.copy:
+    dest: ~/.nanorc
+    src: files/nanorc
+  tags: user
+
+- name: .vimrc
+  ansible.builtin.copy:
+    dest: ~/.vimrc
+    src: files/vimrc
+  tags: user
+
+- name: .tmux.conf
+  ansible.builtin.copy:
+    dest: ~/.tmux.conf
+    src: files/tmux.conf
+  tags: user
+
+- name: terminator config dir
+  ansible.builtin.file:
+    state: directory
+    path: ~/.config/terminator
+  tags: user
+
+- name: terminator config
+  ansible.builtin.copy:
+    src: files/terminator.config
+    dest: ~/.config/terminator/config
+  tags: user
+
+- name: "Allow user {{ ansible_user_id }} to access ttyUSBx"
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    append: true
+    groups:
+    - dialout
+  tags: user
