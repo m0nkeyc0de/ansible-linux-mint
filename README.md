@@ -16,4 +16,3 @@ ansible-playbook -i localhost, mint22.yml --ask-become-pass
 ```
 * VSCodium
 * Brave
-* Dirty bytes
