@@ -27,6 +27,7 @@
     - gparted
     - vlc
     - syncthing
+    - apt-transport-https
 
 - name: File toolbox
   become: true

@@ -22,3 +22,7 @@
 - name: Install Brave
   ansible.builtin.include_tasks: brave.yml
   tags: brave
+
+- name: Install VSCodium
+  ansible.builtin.include_tasks: vscodium.yml
+  tags: vscodium

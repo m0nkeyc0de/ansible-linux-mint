@@ -1,0 +1,23 @@
+---
+# https://vscodium.com/#install-on-debian-ubuntu-deb-package
+- name: VSCodium repository GPG key
+  become: true
+  tags: vscodium
+  ansible.builtin.apt_key:
+    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+    keyring: /usr/share/keyrings/vscodium-archive-keyring.gpg
+    state: present
+
+- name: VSCodium APT source list
+  become: yes
+  tags: vscodium
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/vscodium.list
+    content: "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main"
+
+- name: Install VSCodium
+  become: true
+  tags: vscodium
+  ansible.builtin.apt:
+    name: codium
+    update_cache: yes
