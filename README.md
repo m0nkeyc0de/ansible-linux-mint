@@ -12,5 +12,5 @@ git pull https://url.to.this/git/repo
 Run them locally
 
 ```bash
-ansible-playbook -i localhost, mint22.yml --ask-become-pass
+ansible-playbook mint22.yml --ask-become-pass
 ```

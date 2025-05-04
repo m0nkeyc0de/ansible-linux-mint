@@ -28,6 +28,8 @@
     - vlc
     - syncthing
     - apt-transport-https
+    - fastboot
+    - adb
 
 - name: File toolbox
   become: true
