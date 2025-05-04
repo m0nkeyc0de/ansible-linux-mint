@@ -28,6 +28,10 @@
       value: "['<Primary><Alt>l']"
     - key: "media-keys/screensaver"
       value: "['XF86ScreenSaver', '<Super>l']"
+    - key: "media-keys/terminal"
+      value: "['<Primary><Alt>t', '<Super>t']"
+    - key: "wm/panel-run-dialog"
+      value: "['<Alt>F2', '<Super>r']"
   tags: cinnamon
 
 - name: Configure power options
