@@ -1,5 +1,5 @@
-# Ansible workstation
-Playbooks for a predictable hassle-free workstation setup.
+# Ansible Linux Mint
+Playbooks for a predictable hassle-free Linux Mint workstation setup.
 
 ## Boostrap
 Quick and easy on Linux Mint
