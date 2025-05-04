@@ -1,6 +1,9 @@
 ---
-- name: Flatpak software
+- name: Install Flatpak software
   community.general.flatpak:
     name:
-      - com.github.tchx84.Flatseal
+      - com.github.tchx84.Flatseal # Band-aid for Flatpaks
+      - it.mijorus.gearlever # Band-aid for AppImages
+      - com.bitwarden.desktop
       - org.gimp.GIMP
+  tags: flatpak
