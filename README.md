@@ -14,5 +14,3 @@ Run them locally
 ```bash
 ansible-playbook -i localhost, mint22.yml --ask-become-pass
 ```
-* VSCodium
-* Brave
