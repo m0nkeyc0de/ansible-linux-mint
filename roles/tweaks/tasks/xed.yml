@@ -1,0 +1,30 @@
+---
+# xed (Text Editor)
+- name: Configure text Editor (xed)
+  community.general.dconf:
+    key: "/org/x/editor/preferences/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "editor/auto-close"
+      value: "true"
+    - key: "editor/auto-indent"
+      value: "true"
+    - key: "editor/auto-save"
+      value: "true"
+    - key: "editor/bracket-matching"
+      value: "true"
+    - key: "editor/display-line-numbers"
+      value: "true"
+    - key: "editor/display-right-margin"
+      value: "true"
+    - key: "editor/draw-whitespace"
+      value: "true"
+    - key: "editor/draw-whitespace-leading"
+      value: "true"
+    - key: "editor/draw-whitespace-trailing"
+      value: "true"
+    - key: "editor/highlight-current-line"
+      value: "true"
+    - key: "ui/statusbar-visible"
+      value: "true"
+  tags: xed
