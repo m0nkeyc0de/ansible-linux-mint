@@ -1,0 +1,38 @@
+---
+# Quectel Wireless Solutions Co., Ltd. EM120R-GL LTE Modem
+# A Snap package is needed to have this LTE modem working
+# https://snapcraft.io/lenovo-wwan-dpr
+#
+# NOTE: Linux Mint 22 network setting page is bungled.
+#       Use "Network Connections" to manually create one
+
+- name: Quectel EM120R-GL on Lenovo
+  gather_facts: false
+  connection: local
+  hosts: all
+
+  tasks:
+  # Snaps are disabled by design on Linux Mint
+  # https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html
+  - name: Remove nosnap.pref
+    become: yes
+    ansible.builtin.file:
+      path: /etc/apt/preferences.d/nosnap.pref
+      state: absent
+  
+  - name: Install snapd
+    become: yes
+    ansible.builtin.apt:
+      update_cache: yes
+      name: snapd
+
+  - name: Install lenovo-wwan-dpr from Snap store
+    become: yes
+    community.general.snap:
+      name: lenovo-wwan-dpr
+
+  - name: Useful modem software
+    become: yes
+    ansible.builtin.apt:
+      pkg:
+        - modem-manager-gui # Send SMS

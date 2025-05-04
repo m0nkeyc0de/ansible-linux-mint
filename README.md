@@ -14,9 +14,6 @@ Run them locally
 ```bash
 ansible-playbook -i localhost, mint22.yml --ask-become-pass
 ```
-## To-Do
-* Tags on tasks
 * VSCodium
 * Brave
-* LTE modem with snap
 * Dirty bytes
