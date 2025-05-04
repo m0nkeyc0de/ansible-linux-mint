@@ -1,0 +1,22 @@
+---
+# https://brave.com/linux/
+- name: Brave repository GPG key
+  become: yes
+  tags: brave
+  ansible.builtin.get_url:
+    url:  https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+
+- name: Brave APT source list
+  become: yes
+  tags: brave
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/brave-browser-release.list
+    content: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
+
+- name: Install Brave
+  become: true
+  tags: brave
+  ansible.builtin.apt:
+    name: brave-browser
+    update_cache: yes

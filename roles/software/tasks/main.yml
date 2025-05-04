@@ -18,3 +18,7 @@
 - name: Install Yubico Authenticator from Yubico website
   ansible.builtin.include_tasks: yubico.yml
   tags: yubico
+
+- name: Install Brave
+  ansible.builtin.include_tasks: brave.yml
+  tags: brave
