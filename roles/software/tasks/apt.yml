@@ -30,6 +30,7 @@
     - apt-transport-https
     - fastboot
     - adb
+    - bat
 
 - name: File toolbox
   become: true
