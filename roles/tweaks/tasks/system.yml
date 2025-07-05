@@ -4,7 +4,7 @@
 # Default value is 20% of RAM (vm.dirty_ration) which may be way to much
 # 10MB provides a good file transfer progress accuracy
 - name: Set vm.dirty_bytes
-  become: yes
+  become: true
   ansible.posix.sysctl:
     name: vm.dirty_bytes
     value: "{{ 10 * 1000 * 1000 | int}}"

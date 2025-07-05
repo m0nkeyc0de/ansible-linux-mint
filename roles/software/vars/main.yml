@@ -6,3 +6,9 @@ yubioath_checksum: "md5:D03B4B410873C4B16754978A4DC69107"
 yubioath_tgz: "yubico-authenticator-{{ yubioath_release }}-linux.tar.gz"
 yubioath_tgz_local: "/opt/{{ yubioath_tgz }}"
 yubioath_dir: "/opt/yubico-authenticator-{{ yubioath_release }}-linux" # Where the extracted archive resides
+
+android_studio_release: 2025.1.1.13
+android_studio_tgz: "android-studio-{{ android_studio_release }}-linux.tar.gz"
+android_studio_tgz_local: "/opt/{{ android_studio_tgz }}"
+android_studio_dir: "/opt/android-studio"
+android_studio_cmd: "/usr/bin/android-studio"

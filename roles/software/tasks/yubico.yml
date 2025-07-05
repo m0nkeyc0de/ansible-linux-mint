@@ -13,6 +13,7 @@
     url: "https://developers.yubico.com/yubioath-flutter/Releases/{{ yubioath_tgz }}"
     dest: "{{ yubioath_tgz_local }}"
     checksum: "{{ yubioath_checksum }}" # better to be safe than sorry
+    mode: "0644"
 
 - name: "Extract {{ yubioath_tgz }}"
   become: true

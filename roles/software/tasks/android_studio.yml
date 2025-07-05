@@ -1,0 +1,47 @@
+---
+- name: OpenJDK
+  become: true
+  tags: always
+  ansible.builtin.apt:
+    name: openjdk-21-jdk
+
+- name: "Download {{ android_studio_tgz }}"
+  become: true
+  tags: always
+  ansible.builtin.get_url:
+    url: "https://dl.google.com/dl/android/studio/ide-zips/{{ android_studio_release }}/{{ android_studio_tgz }}"
+    dest: "{{ android_studio_tgz_local }}"
+    mode: "0644"
+  register: studio_download
+
+- name: "Remove older version"
+  become: true
+  tags: always
+  ansible.builtin.file:
+    path: "{{ android_studio_dir }}"
+    state: absent
+  when: studio_download.changed
+
+- name: "Extract {{ android_studio_tgz }}"
+  become: true
+  tags: always
+  ansible.builtin.unarchive:
+    dest: "/opt"
+    src: "{{ android_studio_tgz_local }}"
+    creates: "{{ android_studio_dir }}"
+
+- name: "Create symlink {{ android_studio_cmd }}"
+  become: true
+  tags: always
+  ansible.builtin.file:
+    state: link
+    dest: "{{ android_studio_cmd }}"
+    src: "{{ android_studio_dir }}/bin/studio.sh"
+
+- name: "Create start menu entry"
+  become: true
+  tags: always
+  ansible.builtin.template:
+    src: templates/android-studio.desktop.j2
+    dest: /usr/share/applications/android-studio.desktop
+    mode: "0644"
