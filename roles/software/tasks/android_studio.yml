@@ -36,7 +36,7 @@
   ansible.builtin.file:
     state: link
     dest: "{{ android_studio_cmd }}"
-    src: "{{ android_studio_dir }}/bin/studio.sh"
+    src: "{{ android_studio_dir }}/bin/studio"
 
 - name: "Create start menu entry"
   become: true
