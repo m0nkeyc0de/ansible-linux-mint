@@ -16,3 +16,14 @@
 {{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/picocom
 {{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/wavemon
 {{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/nmap
+
+# Docker related stuff
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl status docker
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl start docker
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl stop docker
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl restart docker
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl disable docker
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/systemctl enable docker
+# The wildcard may be a terrible idea as docker runs as root....
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/docker *
+{{ ansible_user_id }} ALL=NOPASSWD: /usr/bin/docker-compose *

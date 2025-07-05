@@ -9,9 +9,9 @@
 - name: "Selective passwordless sudo for {{ ansible_user_id }}"
   become: true
   ansible.builtin.template:
-    src: templates/sudoers
+    src: templates/sudoers.j2
     dest: "/etc/sudoers.d/{{ ansible_user_id }}"
-    mode: "0644"
+    mode: "0640"
   tags: user
 
 - name: .nanorc
