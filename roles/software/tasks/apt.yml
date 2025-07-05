@@ -31,6 +31,9 @@
     - fastboot
     - adb
     - bat
+    - docker.io
+    - docker-compose
+    - ansible-lint
 
 - name: File toolbox
   become: true
