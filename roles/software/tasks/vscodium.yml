@@ -9,15 +9,16 @@
     state: present
 
 - name: VSCodium APT source list
-  become: yes
+  become: true
   tags: vscodium
   ansible.builtin.copy:
     dest: /etc/apt/sources.list.d/vscodium.list
     content: "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main"
+    mode: "0644"
 
 - name: Install VSCodium
   become: true
   tags: vscodium
   ansible.builtin.apt:
     name: codium
-    update_cache: yes
+    update_cache: true

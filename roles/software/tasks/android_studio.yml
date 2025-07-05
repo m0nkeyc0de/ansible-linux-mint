@@ -20,7 +20,7 @@
   ansible.builtin.file:
     path: "{{ android_studio_dir }}"
     state: absent
-  when: studio_download.changed
+  when: studio_download.changed  # noqa: no-handler
 
 - name: "Extract {{ android_studio_tgz }}"
   become: true

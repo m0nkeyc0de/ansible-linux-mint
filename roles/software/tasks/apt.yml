@@ -3,78 +3,78 @@
   become: true
   ansible.builtin.apt:
     pkg:
-    - python3
-    - python3-venv
+      - python3
+      - python3-venv
 
 - name: Misc tools
   become: true
   ansible.builtin.apt:
     pkg:
-    - openssl
-    - tmux
-    - screen
-    - telnet
-    - htop
-    - colordiff
-    - jq
-    - yq
-    - ssh-askpass
-    - uuid
-    - picocom
-    - dconf-editor
-    - terminator
-    - keepassxc
-    - gparted
-    - vlc
-    - syncthing
-    - apt-transport-https
-    - fastboot
-    - adb
-    - bat
-    - docker.io
-    - docker-compose
-    - ansible-lint
+      - openssl
+      - tmux
+      - screen
+      - telnet
+      - htop
+      - colordiff
+      - jq
+      - yq
+      - ssh-askpass
+      - uuid
+      - picocom
+      - dconf-editor
+      - terminator
+      - keepassxc
+      - gparted
+      - vlc
+      - syncthing
+      - apt-transport-https
+      - fastboot
+      - adb
+      - bat
+      - docker.io
+      - docker-compose
+      - ansible-lint
 
 - name: File toolbox
   become: true
   ansible.builtin.apt:
     pkg:
-    - wget
-    - wput
-    - curl
-    - rsync
-    - filezilla
-    - rclone
-    - ftp
-    - tftp-hpa
-    - neovim
-    - hashcat
-    - testdisk
+      - wget
+      - wput
+      - curl
+      - rsync
+      - filezilla
+      - rclone
+      - ftp
+      - tftp-hpa
+      - neovim
+      - hashcat
+      - testdisk
 
 - name: Network toolbox
   become: true
   ansible.builtin.apt:
     pkg:
-    - hping3
-    - whois
-    - arping
-    - nmap
-    - gping
-    - fping
-    - wavemon
-    - tcpdump
-    - mtr
-    - traceroute
-    - dnsutils
-    - iftop
-    - snmp
-    - iperf3
-    - iperf
-    - speedtest-cli
-    - dhcp-probe
-    - arpwatch
-    - aircrack-ng
-    - dnsenum
+      - hping3
+      - whois
+      - arping
+      - nmap
+      - gping
+      - fping
+      - wavemon
+      - tcpdump
+      - mtr
+      - traceroute
+      - dnsutils
+      - iftop
+      - snmp
+      - iperf3
+      - iperf
+      - speedtest-cli
+      - dhcp-probe
+      - arpwatch
+      - aircrack-ng
+      - dnsenum
 
 - name: Remove bloat
   become: true

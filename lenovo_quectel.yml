@@ -12,27 +12,27 @@
   hosts: all
 
   tasks:
-  # Snaps are disabled by design on Linux Mint
-  # https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html
-  - name: Remove nosnap.pref
-    become: yes
-    ansible.builtin.file:
-      path: /etc/apt/preferences.d/nosnap.pref
-      state: absent
-  
-  - name: Install snapd
-    become: yes
-    ansible.builtin.apt:
-      update_cache: yes
-      name: snapd
+    # Snaps are disabled by design on Linux Mint
+    # https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html
+    - name: Remove nosnap.pref
+      become: true
+      ansible.builtin.file:
+        path: /etc/apt/preferences.d/nosnap.pref
+        state: absent
 
-  - name: Install lenovo-wwan-dpr from Snap store
-    become: yes
-    community.general.snap:
-      name: lenovo-wwan-dpr
+    - name: Install snapd
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        name: snapd
 
-  - name: Useful modem software
-    become: yes
-    ansible.builtin.apt:
-      pkg:
-        - modem-manager-gui # Send SMS
+    - name: Install lenovo-wwan-dpr from Snap store
+      become: true
+      community.general.snap:
+        name: lenovo-wwan-dpr
+
+    - name: Useful modem software
+      become: true
+      ansible.builtin.apt:
+        pkg:
+          - modem-manager-gui # Send SMS

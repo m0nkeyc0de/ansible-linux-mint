@@ -1,18 +1,18 @@
 ---
 - name: Get local groups list
-  ansible.builtin.shell: 
-    cmd: "getent group | cut -d: -f1"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && getent group | cut -d: -f1"
   register: unix_groups
-  changed_when: False
+  changed_when: false
 
 - name: Allow non-root to capture with Wireshark
   become: true
    # Set preference for package installation question
   ansible.builtin.debconf:
-    name='wireshark-common'
-    question='wireshark-common/install-setuid'
-    vtype='boolean'
-    value='true'
+    name: 'wireshark-common'
+    question: wireshark-common/install-setuid'
+    vtype: 'boolean'
+    value: 'true'
   # Only needed when not installed
   when: not 'wireshark' in unix_groups.stdout_lines
 
@@ -21,10 +21,10 @@
   ansible.builtin.apt:
     name: wireshark
 
-- name: "Allow user {{ ansible_user_id }} to capture packets"
+- name: "Allow user to capture packets"
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     append: true
     groups:
-    - wireshark
+      - wireshark

@@ -29,4 +29,6 @@
 
 - name: Install Android Studio
   ansible.builtin.include_tasks: android_studio.yml
-  tags: android_studio
+  tags:
+    - android_studio
+    - never

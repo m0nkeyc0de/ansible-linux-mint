@@ -3,13 +3,17 @@
   become: true
   ansible.builtin.apt:
     upgrade: dist
-    update_cache: yes
-    autoremove: yes
-    purge: yes
-  tags: ["update", "apt"]
+    update_cache: true
+    autoremove: true
+    purge: true
+  tags:
+    - update
+    - apt
 
 - name: Update Flatpak update
   ansible.builtin.command: flatpak update --noninteractive
   register: flatpak_update_output
   changed_when: "'app/' in flatpak_update_output.stdout"
-  tags: ["update", "flatpak"]
+  tags:
+    - update
+    - flatpak
