@@ -1,4 +1,19 @@
 ---
+- name: Passwordless Mint updates for adm members
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/polkit-1/rules.d/99-mint-updates.rules
+    mode: "0644"
+    content: |
+      polkit.addRule(function(action, subject) {
+          if (action.id == "com.linuxmint.updates.apply-updates" ||
+              action.id == "org.aptkit.install-or-remove-packages") {
+              if (subject.active && subject.isInGroup("adm")) {
+                  return polkit.Result.YES;
+              }
+          }
+      });
+
 - name: Bin folder in homedir
   ansible.builtin.file:
     path: "/home/{{ ansible_user_id }}/bin"
