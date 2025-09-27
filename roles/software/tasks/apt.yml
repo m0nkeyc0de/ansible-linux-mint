@@ -19,6 +19,7 @@
       - jq
       - yq
       - ssh-askpass
+      - sshpass
       - uuid
       - picocom
       - dconf-editor

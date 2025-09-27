@@ -1,7 +1,9 @@
 ---
 - name: Update software
   ansible.builtin.include_tasks: update.yml
-  tags: update
+  tags: 
+    - update
+    - never
 
 - name: Install Wireshark
   ansible.builtin.include_tasks: wireshark.yml

@@ -2,6 +2,7 @@
 - name: Get local groups list
   ansible.builtin.shell:
     cmd: "set -o pipefail && getent group | cut -d: -f1"
+    executable: /bin/bash
   register: unix_groups
   changed_when: false
 

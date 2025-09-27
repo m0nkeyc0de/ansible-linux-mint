@@ -6,14 +6,10 @@
     update_cache: true
     autoremove: true
     purge: true
-  tags:
-    - update
-    - apt
+  tags: always
 
 - name: Update Flatpak update
   ansible.builtin.command: flatpak update --noninteractive
   register: flatpak_update_output
   changed_when: "'app/' in flatpak_update_output.stdout"
-  tags:
-    - update
-    - flatpak
+  tags: always
