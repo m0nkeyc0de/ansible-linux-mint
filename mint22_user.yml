@@ -5,8 +5,8 @@
   hosts: all
 
   tasks:
-  - name: Tweaks
+  - name: User tweaks
     ansible.builtin.include_role:
-      name: tweaks
+      name: tweaks_user
     tags: always
 

@@ -7,10 +7,6 @@
   ansible.builtin.include_tasks: cinnamon.yml
   tags: always
 
-- name: System tweaks
-  ansible.builtin.include_tasks: system.yml
-  tags: always
-
 - name: Text Editor
   ansible.builtin.include_tasks: xed.yml
   tags: always

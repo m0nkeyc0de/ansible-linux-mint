@@ -9,8 +9,13 @@ git pull https://url.to.this/git/repo
 ```
 
 ## Usage
-Run them locally
+System level modifications
 
 ```bash
-ansible-playbook mint22.yml --ask-become-pass
+ansible-playbook mint22_system.yml --ask-become-pass
+```
+
+User level modifications
+```bash
+ansible-playbook mint22_user.yml
 ```

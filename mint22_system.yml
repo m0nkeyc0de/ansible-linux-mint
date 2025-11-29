@@ -5,9 +5,13 @@
   hosts: all
 
   tasks:
-
-  - name: Tweaks
+  - name: Software
     ansible.builtin.include_role:
-      name: tweaks
+      name: software
+    tags: always
+
+  - name: System tweaks
+    ansible.builtin.include_role:
+      name: tweaks_system
     tags: always
 
