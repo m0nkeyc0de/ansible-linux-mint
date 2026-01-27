@@ -8,7 +8,7 @@
       value: "'terminator'"
   tags: cinnamon
 
-- name: Configure Nemo
+- name: Configure Nemo preferences
   community.general.dconf:
     key: "/org/nemo/preferences/{{ item.key }}"
     value: "{{ item.value }}"
@@ -17,6 +17,15 @@
       value: "'list-view'"
     - key: "detect-content"
       value: "false"
+  tags: cinnamon
+
+- name: Configure Nemo list view
+  community.general.dconf:
+    key: "/org/nemo/list-view/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "enable-folder-expansion"
+      value: "true"
   tags: cinnamon
 
 - name: Configure keybindings
@@ -34,6 +43,19 @@
       value: "['<Alt>F2', '<Super>r']"
   tags: cinnamon
 
+- name: Logitech MX Keys Screenshot keybinding
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "binding"
+      value: "['<Shift><Super>s']"
+    - key: "command"
+      value: "'gnome-screenshot --area --interactive --delay 2'"
+    - key: "name"
+      value: "'Screenshot MX Keys'"
+  tags: cinnamon
+
 - name: Configure power options
   community.general.dconf:
     key: "/org/cinnamon/settings-daemon/plugins/power/{{ item.key }}"
@@ -43,8 +65,51 @@
       value: "'nothing'"
     - key: "lid-close-battery-action"
       value: "'nothing'"
+    - key: "sleep-display-ac"
+      value: "600"
+    - key: "sleep-display-battery"
+      value: "300"
+    - key: "sleep-inactive-ac-timeout"
+      value: "0"
+    - key: "sleep-inactive-battery-timeout"
+      value: "0"
   tags: cinnamon
-    
+
+- name: Configure notifications
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/notifications/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "notification-duration"
+      value: "4"
+    - key: "remove-old"
+      value: "true"
+  tags: cinnamon
+
+- name: Configure update options
+  community.general.dconf:
+    key: "/com/linuxmint/updates/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: "auto-update-cinnamon-spices"
+      value: "false"
+    - key: "auto-update-flatpaks"
+      value: "false"
+    - key: "autorefresh-days"
+      value: "7"
+    - key: "autorefresh-hours"
+      value: "0"
+    - key: "hide-systray"
+      value: "true"
+    - key: "refresh-hours"
+      value: "6"
+    - key: "refresh-minutes"
+      value: "0"
+    - key: "show-welcome-page"
+      value: "false"
+  tags: cinnamon
+
+
 - name: Media handling options
   community.general.dconf:
     key: "/org/cinnamon/desktop/media-handling/{{ item.key }}"
